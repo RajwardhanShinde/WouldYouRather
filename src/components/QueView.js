@@ -39,7 +39,8 @@ class QueView extends Component {
     const { authedUser } = this.props;
     const { id } = this.props.question;
     const qid = id;
-    let answer = e.target.value;
+    let answer = this.state.selectedOption;
+
     if (answer === this.props.question.optionOne.text) {
       answer = "optionOne";
     } else {

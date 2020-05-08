@@ -13,6 +13,10 @@ class Result extends Component {
       id,
     } = this.props.question;
 
+    const { authedUser } = this.props;
+    const first = optionOne.votes.includes(authedUser) ? "selected" : "";
+    const second = optionTwo.votes.includes(authedUser) ? "selected" : "";
+
     const options = [optionOne, optionTwo];
     const length1 = optionOne.votes.length;
     const length2 = optionTwo.votes.length;
@@ -25,14 +29,26 @@ class Result extends Component {
           <span>{name}</span>
           <p>{formatDate(timestamp)}</p>
           <h4>Result</h4>
-          <p>
-            {length1} out of {total} votes
-          </p>
-          <p>Would You Rather {optionOne.text} ?</p>
-          <p>
-            {length2} out of {total} votes
-          </p>
-          <p>Would You Rather {optionTwo.text} ?</p>
+          <div className={first}>
+            <p>Would You Rather {optionOne.text} ?</p>
+            <p>
+              <progress value={length1} max={total}>
+                {length1}
+              </progress>{" "}
+              <br />
+              {length1} out of {total} votes
+            </p>
+          </div>
+          <div className={second}>
+            <p>Would You Rather {optionTwo.text} ?</p>
+            <p>
+              <progress value={length2} max={total}>
+                {length2}
+              </progress>
+              <br />
+              {length2} out of {total} votes
+            </p>
+          </div>
         </div>
       </div>
     );

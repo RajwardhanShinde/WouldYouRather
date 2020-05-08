@@ -20,12 +20,15 @@ class Home extends Component {
     return (
       <div>
         <div className="center">All Questions</div>
-        <button type="button" name="unanswered" onClick={this.handleChange}>
-          Unanswered
-        </button>
-        <button type="button" name="answered" onClick={this.handleChange}>
-          Answered
-        </button>
+        <div className="tab center  ">
+          <button type="button" name="unanswered" onClick={this.handleChange}>
+            Unanswered
+          </button>
+          <button type="button" name="answered" onClick={this.handleChange}>
+            Answered
+          </button>
+        </div>
+
         <ul>
           {que.map((id) => (
             <li style={{ listStyle: "none" }} key={id}>
