@@ -50,11 +50,13 @@ body {
 }
 
 .question-block {
+  text-decoration: none;
+  color: black;
   display: flex;
   border: 1px dotted #8d7c7c;
   padding: 10px;
   width: 100%;
-  margin-top: 30px;
+  margin-top: auto;
 }
 
 .question-info {
@@ -126,4 +128,34 @@ body {
 .input-option {
   cursor: pointer;
   margin-bottom: 15px;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+
+.nav li:first-child {
+  padding-left: 0;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.active {
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: #252525;
 }

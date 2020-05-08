@@ -14,6 +14,10 @@ class Result extends Component {
     } = this.props.question;
 
     const options = [optionOne, optionTwo];
+    const length1 = optionOne.votes.length;
+    const length2 = optionTwo.votes.length;
+    const total = length1 + length2;
+
     return (
       <div className="question-block">
         <img src={avatarURL} alt={`Avatar of ${name}`} className="avatar" />
@@ -21,6 +25,14 @@ class Result extends Component {
           <span>{name}</span>
           <p>{formatDate(timestamp)}</p>
           <h4>Result</h4>
+          <p>
+            {length1} out of {total} votes
+          </p>
+          <p>Would You Rather {optionOne.text} ?</p>
+          <p>
+            {length2} out of {total} votes
+          </p>
+          <p>Would You Rather {optionTwo.text} ?</p>
         </div>
       </div>
     );

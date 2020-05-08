@@ -21,6 +21,10 @@ class NewQuestion extends Component {
     console.log(optionOneText, optionTwoText);
     const { dispatch } = this.props;
     dispatch(handleAddQuestion({ optionOneText, optionTwoText }));
+    this.setState(() => ({
+      optionOneText: "",
+      optionTwoText: "",
+    }));
   };
 
   render() {

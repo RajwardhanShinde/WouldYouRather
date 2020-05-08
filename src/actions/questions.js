@@ -15,11 +15,12 @@ export function handleAddQuestion(Options) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
     const { optionOneText, optionTwoText } = Options;
+    const author = authedUser;
     console.log(authedUser, optionOneText, optionTwoText);
     return saveQuestion({
       optionOneText,
       optionTwoText,
-      authedUser,
+      author,
     }).then((question) => dispatch(addQuestion(question)));
   };
 }
@@ -31,12 +32,12 @@ export function receiveQuestions(questions) {
   };
 }
 
-function answer({ authedUser, qid, ans }) {
+function answer({ authedUser, qid, answer }) {
   return {
     type: SAVE_ANSWER,
     authedUser,
     qid,
-    ans,
+    answer,
   };
 }
 

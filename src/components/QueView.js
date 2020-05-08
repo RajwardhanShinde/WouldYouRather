@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { formatQuestion, formatDate } from "../QueApi/helpers";
+import { handleSaveAnswer } from "../actions/questions";
+import { Redirect } from "react-router-dom";
 
 const PollOption = ({ options, selected, onChange }) => {
   return (
@@ -29,15 +31,31 @@ const PollOption = ({ options, selected, onChange }) => {
 class QueView extends Component {
   constructor(props) {
     super(props);
-    this.state = { selectedOption: "" };
+    this.state = { selectedOption: "", answerSubmitted: false };
   }
 
-  handleClick() {
-    console.log("submitted option", this.state.selectedOption);
-  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { authedUser } = this.props;
+    const { id } = this.props.question;
+    const qid = id;
+    let answer = e.target.value;
+    if (answer === this.props.question.optionOne.text) {
+      answer = "optionOne";
+    } else {
+      answer = "optionTwo";
+    }
+
+    const { dispatch } = this.props;
+    console.log("id:", qid);
+    dispatch(handleSaveAnswer({ authedUser, qid, answer }));
+    this.setState(() => ({
+      selectedOption: "",
+      answerSubmitted: true,
+    }));
+  };
 
   handleOnChange(e) {
-    console.log("selected option", e.target.value);
     this.setState({ selectedOption: e.target.value });
   }
 
@@ -52,22 +70,28 @@ class QueView extends Component {
     } = this.props.question;
 
     const options = [optionOne, optionTwo];
+
+    const { answerSubmitted } = this.state;
+    if (answerSubmitted === true) {
+      return <Redirect to={`/question/${id}/results`} />;
+    }
+
     return (
       <div className="question-block">
         <img src={avatarURL} alt={`Avatar of ${name}`} className="avatar" />
         <div className="question-info">
           <span>{name}</span>
           <p>{formatDate(timestamp)}</p>
-          <div className="group">
+          <form className="group" onSubmit={this.handleSubmit}>
             <PollOption
               options={options}
               onChange={(e) => this.handleOnChange(e)}
               selected={this.state.selectedOption}
             />
-            <button className="vote-btn" onClick={() => this.handleClick()}>
+            <button className="vote-btn" type="submit">
               Vote!
             </button>
-          </div>
+          </form>
         </div>
       </div>
     );
