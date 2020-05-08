@@ -16,6 +16,11 @@ class Nav extends Component {
               New Pole
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/leaderboard" activeClassName="active">
+              Leaderboard
+            </NavLink>
+          </li>
         </ul>
       </nav>
     );

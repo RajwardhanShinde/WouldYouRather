@@ -10,14 +10,12 @@ class Result extends Component {
       optionOne,
       optionTwo,
       timestamp,
-      id,
     } = this.props.question;
 
     const { authedUser } = this.props;
     const first = optionOne.votes.includes(authedUser) ? "selected" : "";
     const second = optionTwo.votes.includes(authedUser) ? "selected" : "";
 
-    const options = [optionOne, optionTwo];
     const length1 = optionOne.votes.length;
     const length2 = optionTwo.votes.length;
     const total = length1 + length2;

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleAddQuestion } from "../actions/questions";
+import { Redirect } from "react-router-dom";
 
 class NewQuestion extends Component {
   state = {
     optionOneText: "",
     optionTwoText: "",
+    created: false,
   };
 
   handleInputChange = (e) => {
@@ -24,11 +26,17 @@ class NewQuestion extends Component {
     this.setState(() => ({
       optionOneText: "",
       optionTwoText: "",
+      created: true,
     }));
   };
 
   render() {
-    const { optionOneText, optionTwoText } = this.state;
+    const { optionOneText, optionTwoText, created } = this.state;
+
+    if (created) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div>
         <h1>Create New Question</h1>

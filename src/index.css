@@ -60,7 +60,7 @@ body {
 }
 
 .question-info {
-  margin-left: 30%;
+  margin-left: 320px;
 }
 
 .avatar {
@@ -179,4 +179,17 @@ a {
 
 .tab button:hover {
   cursor: pointer;
+}
+
+.score {
+  margin-left: -14%;
+  text-align: center;
+  margin-top: 4%;
+}
+
+.total {
+  text-align: center;
+  border: 2px dotted black;
+  background-color: #ebe704;
+  border-radius: 80%;
 }

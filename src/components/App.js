@@ -9,6 +9,7 @@ import Home from "./Home";
 import QueView from "./QueView";
 import Result from "./Result";
 import Nav from "./Nav";
+import LeaderBoard from "./LeaderBoard";
 
 class App extends Component {
   componentDidMount() {
@@ -28,6 +29,7 @@ class App extends Component {
                 <Route exact path="/question/:id" component={QueView} />
                 <Route path="/new" component={NewQuestion} />
                 <Route exact path="/question/:id/results" component={Result} />
+                <Route path="/leaderboard" component={LeaderBoard} />
               </div>
             )}
           </div>
