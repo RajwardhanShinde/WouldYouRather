@@ -1,18 +1,18 @@
 # Would You Rather
 
-# Installing Dependencies
+## Installing Dependencies
 
 ```
     npm install
 ```
 
-# Running Project
+## Running Project
 
 ```
     npm start
 ```
 
-# This is react-redux project which allows you to :-
+## This is react-redux project which allows you to :-
 
 - Vote For A Pole
 - Create A New Pole
