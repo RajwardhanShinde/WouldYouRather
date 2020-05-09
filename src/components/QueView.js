@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { formatQuestion, formatDate } from "../QueApi/helpers";
-import { handleSaveAnswer } from "../actions/questions";
+import { handleSaveAnswer } from "../actions/shared";
 import { Redirect } from "react-router-dom";
 
 const PollOption = ({ options, selected, onChange }) => {
@@ -36,7 +36,7 @@ class QueView extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { authedUser } = this.props;
+
     const { id } = this.props.question;
     const qid = id;
     let answer = this.state.selectedOption;
@@ -49,7 +49,7 @@ class QueView extends Component {
 
     const { dispatch } = this.props;
     console.log("id:", qid);
-    dispatch(handleSaveAnswer({ authedUser, qid, answer }));
+    dispatch(handleSaveAnswer(qid, answer));
     this.setState(() => ({
       selectedOption: "",
       answerSubmitted: true,
